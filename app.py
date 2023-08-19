@@ -8,6 +8,10 @@ from sqlalchemy import text
 basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
 
+@app.route('/', methods=['POST'])
+def health_check():
+    return jsonify({'message': 'ATM is running'}), 200
+
 # withddrawal operations
 @app.route('/atm/withdrawal', methods=['POST'])
 def atm_withdrawal():
@@ -43,5 +47,5 @@ if __name__ == '__main__':
         DbManager = DBManager(db=db)
         ATM = Atm_State(dbmanager=DbManager)
      
-    app.run(port=5000,debug=True)
+    app.run(host="0.0.0.0", port=3000,debug=True)
             

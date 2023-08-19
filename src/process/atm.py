@@ -17,6 +17,7 @@ class Atm_State:
             total_amount += float(key) * value
         return total_amount
     
+    
     # refill operation
     def refill(self , refill_dict: dict) -> dict:
         try:
@@ -78,7 +79,7 @@ class Atm_State:
         except:
             return Validator.get_unexpected_error()
 
-    
+    # reset data
     def reset_atm(self)-> dict:
         try:
             self.dbmanager.reset_database()
